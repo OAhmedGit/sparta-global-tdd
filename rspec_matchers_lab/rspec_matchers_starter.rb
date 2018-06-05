@@ -17,11 +17,11 @@ describe "show the depths of rspec" do
       expect(a).to eql(b) # object equivalence - a and b have the same value
       expect(a).to equal(b) # object identity - a and b refer to the same object
 
-      expect(b).to eql(c) # this will fail as c (float) is not an equivalent object to b (int)
+      # expect(b).to eql(c) # this will fail as c (float) is not an equivalent object to b (int)
 
-      expect(b).not_to equal() # which variable will make this test pass?
-      expect(b).not_to eql() # which variable will make this test pass?
-      expect(b).to eq() # which variable will make this test pass?
+      expect(b).not_to equal(c) # which variable will make this test pass?
+      expect(b).not_to eql(c) # which variable will make this test pass?
+      expect(b).to eq(a) # which variable will make this test pass?
     end
 
     it 'should test the various different type of comparison matcher' do
@@ -29,18 +29,18 @@ describe "show the depths of rspec" do
       e = 10
       f = 20
 
-    #   expect(e).to # check if e is greater than d
-    #   expect(e).to # check to see if equal to or less than f
-    #   expect(f).to # check to see if f is greater than or equal to e
-    #   expect(e).to # check whether e is between d & f
-    #   expect(d).to # check whether d is NOT between e & f
+      expect(e).to be > d # check if e is greater than d
+      expect(e).to be <= f # check to see if equal to or less than f
+      expect(f).to be >= e # check to see if f is greater than or equal to e
+      expect(e).to be_between(d,f) # check whether e is between d & f
+      expect(d).not_to be_between(e,f) # check whether d is NOT between e & f
       end
 
       it 'should test the various class type matchers' do
         g = 5.0
         h = Hash.new
-    #     expect(g).to #check if g is a float
-    #     expect(h).to #check if h is a hash
+        expect(g).to be_kind_of(Float) #check if g is a float
+        expect(h).to be_kind_of(Hash) #check if h is a hash
       end
     
 

@@ -9,7 +9,7 @@ describe FizzBuzzEngine do
     end
 
     # Checks if the object type is an array and between 1 and 100
-    it 'should be an array between 1 - 100' do
+    it 'should be an array from 1 - 100' do
         expect(@fizz_buzz.create_array).to eq((1..100).to_a)
     end
 
